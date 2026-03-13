@@ -16,7 +16,7 @@ Date: March 10, 2026
 
 Project Description
 
-The Movie Management System is a web application built using Spring Boot that manages information related to movies, actors, genres, and cinema locations.
+## The Movie Management System is a web application built using Spring Boot that manages information related to movies, actors, genres, and cinema locations.
 
 The system demonstrates database relationships and Spring Data JPA functionalities, including:
 
@@ -34,7 +34,7 @@ Existence checking using existsBy()
 
 Retrieving movies based on location (province)
 
-The goal of the project is to demonstrate how relational databases work with Spring Boot applications.
+## The goal of the project is to demonstrate how relational databases work with Spring Boot applications.
 
 Technologies Used
 
@@ -54,7 +54,7 @@ Postman for API testing
 
 Entity Relationship Diagram (ERD)
 
-The system contains five main tables:
+## The system contains five main tables:
 
 Movie
 
@@ -199,7 +199,13 @@ Movie → Cinema → Province
 
 This allows the system to list movies available in a specific province.
 
-How to Run the Project
+## Project Structure
+
+- Movie
+- Actor
+- Director
+- UserProfile
+## How to Run the Project
 1. Clone the repository
 git clone https://github.com/your-username/movie-management-system.git
 2. Open the project in
@@ -212,7 +218,7 @@ mvn spring-boot:run
 
 Postman.
 
-Conclusion
+## Conclusion
 
 The Movie Management System demonstrates how to build a Spring Boot application integrated with a relational database.
 
@@ -226,4 +232,4 @@ Sorting and pagination
 
 Query methods
 
-This implementation helps understand how modern web applications manage structured data efficiently.
+## This implementation helps understand how modern web applications manage structured data efficiently.
