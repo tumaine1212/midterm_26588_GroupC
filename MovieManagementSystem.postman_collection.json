@@ -1,0 +1,2706 @@
+{
+  "info": {
+    "_postman_id": "63b5c3fa-dcd1-4636-96a4-2c235d529cda",
+    "name": "Movie Management System API",
+    "description": "Complete API collection for Movie Management System with all endpoints and sample data",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52432308"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8082",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "Save Province",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kigali\",\n  \"code\": \"KG\",\n  \"type\": \"PROVINCE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "save"]
+            },
+            "description": "Save a new Province location"
+          },
+          "response": []
+        },
+        {
+          "name": "Save District",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Nyarugenge\",\n  \"code\": \"NY\",\n  \"type\": \"DISTRICT\",\n  \"parent\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "save"]
+            },
+            "description": "Save a new District location (requires existing parent province ID)"
+          },
+          "response": []
+        },
+        {
+          "name": "Save Sector",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kimisagara\",\n  \"code\": \"KM\",\n  \"type\": \"SECTOR\",\n  \"parent\": {\n    \"id\": 2\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "save"]
+            },
+            "description": "Save a new Sector location (requires existing parent district ID)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Locations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Location by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Provinces",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/provinces",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "provinces"]
+            },
+            "description": "Get all top-level locations (parent is null)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Children by Parent ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/1/children",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "1", "children"]
+            },
+            "description": "Get districts under a province or sectors under a district"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Locations by Type",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/type/PROVINCE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "type", "PROVINCE"]
+            },
+            "description": "Filter locations by type: PROVINCE, DISTRICT, SECTOR"
+          },
+          "response": []
+        },
+        {
+          "name": "Search Locations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/search?searchTerm=ki",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "search"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "ki"
+                }
+              ]
+            },
+            "description": "Search locations by name or code"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Paginated Locations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/paginated?page=0&size=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Location",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kigali City\",\n  \"code\": \"KG\",\n  \"type\": \"PROVINCE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/update/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "update", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Location",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/delete/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "delete", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users by Location",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/1/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "1", "users"]
+            },
+            "description": "Get all users in a specific location"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Directors",
+      "item": [
+        {
+          "name": "Save Director",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Christopher\",\n  \"lastName\": \"Nolan\",\n  \"nationality\": \"British-American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Director 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Quentin\",\n  \"lastName\": \"Tarantino\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Director 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Martin\",\n  \"lastName\": \"Scorsese\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Directors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Director by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Directors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/search?searchTerm=nolan",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "search"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "nolan"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by First Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/search/firstname?firstName=Quentin&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "search", "firstname"],
+              "query": [
+                {
+                  "key": "firstName",
+                  "value": "Quentin"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Last Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/search/lastname?lastName=Scorsese&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "search", "lastname"],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "Scorsese"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Nationality",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/nationality/American",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "nationality", "American"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Existence",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/exists?firstName=Christopher&lastName=Nolan",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "exists"],
+              "query": [
+                {
+                  "key": "firstName",
+                  "value": "Christopher"
+                },
+                {
+                  "key": "lastName",
+                  "value": "Nolan"
+                }
+              ]
+            },
+            "description": "Check if a director exists by first and last name"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Paginated Directors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/paginated?page=0&size=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Director",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Christopher\",\n  \"lastName\": \"Nolan\",\n  \"nationality\": \"British\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/update/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "update", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Director",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/delete/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "delete", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Actors",
+      "item": [
+        {
+          "name": "Save Actor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Leonardo\",\n  \"lastName\": \"DiCaprio\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Actor 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Brad\",\n  \"lastName\": \"Pitt\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Actor 3",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Cillian\",\n  \"lastName\": \"Murphy\",\n  \"nationality\": \"Irish\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Actor 4",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Samuel L.\",\n  \"lastName\": \"Jackson\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Actors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Actor by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Actors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/search?searchTerm=leo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "search"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "leo"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by First Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/search/firstname?firstName=Brad&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "search", "firstname"],
+              "query": [
+                {
+                  "key": "firstName",
+                  "value": "Brad"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Last Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/search/lastname?lastName=Murphy&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "search", "lastname"],
+              "query": [
+                {
+                  "key": "lastName",
+                  "value": "Murphy"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Nationality",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/nationality/American",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "nationality", "American"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Existence",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/exists?firstName=Leonardo&lastName=DiCaprio",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "exists"],
+              "query": [
+                {
+                  "key": "firstName",
+                  "value": "Leonardo"
+                },
+                {
+                  "key": "lastName",
+                  "value": "DiCaprio"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Paginated Actors",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/paginated?page=0&size=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Actor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Leonardo\",\n  \"lastName\": \"DiCaprio\",\n  \"nationality\": \"USA\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/update/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "update", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Actor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/delete/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "delete", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "item": [
+        {
+          "name": "Save Movie (Inception)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Inception\",\n  \"releaseYear\": 2010,\n  \"genre\": \"Sci-Fi\",\n  \"rating\": 8.8,\n  \"director\": {\n    \"id\": 1\n  },\n  \"actors\": [\n    {\"id\": 1},\n    {\"id\": 2}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "save"]
+            },
+            "description": "Save a movie with director and actors (requires existing IDs)"
+          },
+          "response": []
+        },
+        {
+          "name": "Save Movie (Pulp Fiction)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Pulp Fiction\",\n  \"releaseYear\": 1994,\n  \"genre\": \"Crime\",\n  \"rating\": 8.9,\n  \"director\": {\n    \"id\": 2\n  },\n  \"actors\": [\n    {\"id\": 4}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Movie (Oppenheimer)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Oppenheimer\",\n  \"releaseYear\": 2023,\n  \"genre\": \"Biography\",\n  \"rating\": 8.4,\n  \"director\": {\n    \"id\": 1\n  },\n  \"actors\": [\n    {\"id\": 3}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Movie (The Departed)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"The Departed\",\n  \"releaseYear\": 2006,\n  \"genre\": \"Crime\",\n  \"rating\": 8.5,\n  \"director\": {\n    \"id\": 3\n  },\n  \"actors\": [\n    {\"id\": 1},\n    {\"id\": 2}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Movies",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Movie by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Movies",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/search?searchTerm=inception",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "search"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "inception"
+                }
+              ]
+            },
+            "description": "Search movies by title or genre"
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Title (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/search/title?title=Fiction&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "search", "title"],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "Fiction"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Genre (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/search/genre?genre=Crime&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "search", "genre"],
+              "query": [
+                {
+                  "key": "genre",
+                  "value": "Crime"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Genre",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/genre/Sci-Fi",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "genre", "Sci-Fi"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Genre (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/genre/Crime/paginated?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "genre", "Crime", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Year",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/year/2010",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "year", "2010"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Year (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/year/2023/paginated?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "year", "2023", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Director",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/director/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "director", "1"]
+            },
+            "description": "Get all movies by a specific director"
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Director (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/director/1/paginated?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "director", "1", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Movie Existence",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/exists/Inception",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "exists", "Inception"]
+            },
+            "description": "Check if a movie exists by title"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Paginated Movies",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/paginated?page=0&size=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Movie",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Inception\",\n  \"releaseYear\": 2010,\n  \"genre\": \"Science Fiction\",\n  \"rating\": 9.0,\n  \"director\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/update/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "update", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Movie",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/delete/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "delete", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Save User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"USER\",\n  \"userProfile\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"bio\": \"Movie enthusiast\",\n    \"avatarUrl\": \"https://example.com/avatar.jpg\"\n  },\n  \"location\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "save"]
+            },
+            "description": "Save a new user with profile and location"
+          },
+          "response": []
+        },
+        {
+          "name": "Save Admin User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@moviesystem.com\",\n  \"password\": \"admin123\",\n  \"role\": \"ADMIN\",\n  \"userProfile\": {\n    \"firstName\": \"System\",\n    \"lastName\": \"Administrator\",\n    \"bio\": \"System administrator\",\n    \"avatarUrl\": \"https://example.com/admin.jpg\"\n  },\n  \"location\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Save Moderator User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"moderator\",\n  \"email\": \"mod@moviesystem.com\",\n  \"password\": \"mod123\",\n  \"role\": \"MODERATOR\",\n  \"userProfile\": {\n    \"firstName\": \"Content\",\n    \"lastName\": \"Moderator\",\n    \"bio\": \"Content moderator\",\n    \"avatarUrl\": \"https://example.com/mod.jpg\"\n  },\n  \"location\": {\n    \"id\": 2\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/all",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "all"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/search?searchTerm=john",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "search"],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "john"
+                }
+              ]
+            },
+            "description": "Search users by username or email"
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Username (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/search/username?username=admin&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "search", "username"],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "admin"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search by Email (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/search/email?email=example&page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "search", "email"],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "example"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Role",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/role/USER",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "role", "USER"]
+            },
+            "description": "Get all users with specific role: ADMIN, USER, MODERATOR"
+          },
+          "response": []
+        },
+        {
+          "name": "Filter by Role (Paginated)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/role/ADMIN/paginated?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "role", "ADMIN", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Username Existence",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/exists/username/john_doe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "exists", "username", "john_doe"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Check Email Existence",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/exists/email/john@example.com",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "exists", "email", "john@example.com"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users by Province Code",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/by-province/code/KG",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "by-province", "code", "KG"]
+            },
+            "description": "Get users by province code"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users by Province Name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/by-province/name/Kigali",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "by-province", "name", "Kigali"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users by Province (Any)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/by-province/any?code=KG&name=Kigali",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "by-province", "any"],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "KG"
+                },
+                {
+                  "key": "name",
+                  "value": "Kigali"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Users by Location Hierarchy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/by-location-hierarchy?locType=PROVINCE&locValue=Kigali",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "by-location-hierarchy"],
+              "query": [
+                {
+                  "key": "locType",
+                  "value": "PROVINCE"
+                },
+                {
+                  "key": "locValue",
+                  "value": "Kigali"
+                }
+              ]
+            },
+            "description": "Get users by location hierarchy (walks up to 3 levels)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Paginated Users",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/paginated?page=0&size=5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "paginated"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"john_doe_updated\",\n  \"email\": \"john.updated@example.com\",\n  \"password\": \"newpassword123\",\n  \"role\": \"USER\",\n  \"userProfile\": {\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe Updated\",\n    \"bio\": \"Updated bio\",\n    \"avatarUrl\": \"https://example.com/new-avatar.jpg\"\n  },\n  \"location\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/update/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "update", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/delete/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "delete", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Profiles",
+      "item": [
+        {
+          "name": "Get Profile by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/profiles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profiles", "1"]
+            },
+            "description": "Get user profile by ID (profiles are created with users)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Quick Start - Sample Data",
+      "item": [
+        {
+          "name": "1. Save Kigali Province",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kigali\",\n  \"code\": \"KG\",\n  \"type\": \"PROVINCE\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/locations/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "locations", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2. Save Christopher Nolan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Christopher\",\n  \"lastName\": \"Nolan\",\n  \"nationality\": \"British-American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/directors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "directors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3. Save Leonardo DiCaprio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Leonardo\",\n  \"lastName\": \"DiCaprio\",\n  \"nationality\": \"American\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actors/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actors", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4. Save Movie (requires IDs from above)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Inception\",\n  \"releaseYear\": 2010,\n  \"genre\": \"Sci-Fi\",\n  \"rating\": 8.8,\n  \"director\": {\n    \"id\": 1\n  },\n  \"actors\": [\n    {\"id\": 1}\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movies/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "movies", "save"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5. Save User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"movie_fan\",\n  \"email\": \"fan@movies.com\",\n  \"password\": \"pass123\",\n  \"role\": \"USER\",\n  \"userProfile\": {\n    \"firstName\": \"Movie\",\n    \"lastName\": \"Fan\",\n    \"bio\": \"I love movies!\",\n    \"avatarUrl\": \"https://example.com/avatar.jpg\"\n  },\n  \"location\": {\n    \"id\": 1\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users/save",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "save"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
