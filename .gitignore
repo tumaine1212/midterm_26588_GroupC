@@ -1,0 +1,50 @@
+﻿# Compiled files
+target/
+*.class
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+.metadata
+bin/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.settings/
+.project
+.classpath
+
+# IntelliJ
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Maven build
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Help file (not needed in repo)
+HELP.md
+
+# Keep postman collection (optional - remove if you don't want it)
+# MovieManagementSystem.postman_collection.json
